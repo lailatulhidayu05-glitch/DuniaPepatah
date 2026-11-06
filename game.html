@@ -1,0 +1,1541 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#765180">
+<meta name="description" content="Hikayat: pengembaraan kuiz peribahasa dalam tiga alam fantasi Melayu.">
+<title>Hikayat — Pengembaraan Bahasa</title>
+<style>
+:root {
+  --font-body: 'DM Sans', sans-serif;
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
+  --background: #faf7f5;
+  --foreground: #45354e;
+  --primary: #72527f;
+  --primary-foreground: #fffaf5;
+  --card: #fffaf5;
+  --card-foreground: #45354e;
+  --muted: #efe7ee;
+  --muted-foreground: #89788d;
+  --border: #e5dce4;
+  --popover: #fffaf5;
+  --popover-foreground: #45354e;
+  --ring: #aa82ad;
+  --accent: #f1e7ee;
+  --accent-foreground: #644471;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-size: 14px;
+}
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+button {
+  cursor: pointer;
+  font: inherit;
+  transition:
+    background 0.2s,
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+button:disabled {
+  cursor: default;
+}
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #b78bbd;
+  outline-offset: 5px;
+}
+button:not(:disabled):active {
+  transform: translateY(1px);
+}
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+button {
+  border: 0;
+}
+svg {
+  flex-shrink: 0;
+}
+.app-shell {
+  max-width: 1600px;
+  margin: auto;
+}
+.header {
+  height: 98px;
+  padding: 0 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  gap: 28px;
+  background: #fdfbf9;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  text-decoration: none;
+  color: #5c3a6b;
+  font: 600 36px/0.9 var(--font-heading);
+  letter-spacing: -1.5px;
+}
+.brand-icon {
+  display: grid;
+  place-items: center;
+  width: 43px;
+  height: 49px;
+  border: 1px solid #c4a583;
+  border-radius: 22px 22px 5px 5px;
+  color: #a98a58;
+}
+.brand-dot {
+  color: #bc8a9f;
+}
+.brand small {
+  font: 500 8px/1.6 var(--font-body);
+  display: block;
+  letter-spacing: 2.1px;
+  margin-top: 8px;
+}
+.header nav {
+  display: flex;
+  height: 100%;
+  gap: 33px;
+}
+.header nav button {
+  background: none;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #978499;
+  font-size: 12px;
+  position: relative;
+}
+.header nav button.nav-active {
+  color: #73517f;
+  font-weight: 600;
+}
+.nav-active:after {
+  content: '';
+  height: 3px;
+  background: #9b759f;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 3px 3px 0 0;
+}
+.header-actions {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+.score {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background: #f3ede5;
+  border: 1px solid #e8dcc8;
+  border-radius: 30px;
+  color: #a47c3f;
+  padding: 10px 16px;
+  font-weight: 700;
+  font-size: 17px;
+}
+.score small {
+  font-size: 9px;
+  letter-spacing: 1px;
+  margin-left: 4px;
+  color: #9b8d79;
+}
+.icon-button {
+  background: none;
+  color: #8e7a95;
+  padding: 8px;
+}
+main {
+  padding: 0 6%;
+}
+.intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 47px 0 34px;
+}
+.eyebrow {
+  font-size: 9px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: #9d7b99;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.eyebrow > span {
+  width: 5px;
+  height: 5px;
+  background: #bd96ac;
+  border-radius: 50%;
+}
+.intro h1 {
+  font: 500 clamp(32px, 3.2vw, 49px)/1.2 var(--font-heading);
+  letter-spacing: -1.3px;
+  margin: 13px 0 13px;
+}
+.intro h1 em {
+  color: #976489;
+  font-weight: 500;
+}
+.intro p {
+  font-size: 12px;
+  line-height: 1.9;
+  color: #928394;
+}
+.intro-seal {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: #b19373;
+  padding: 0 18px;
+  gap: 10px;
+}
+.intro-seal > span {
+  font-size: 8px;
+  letter-spacing: 2.2px;
+}
+.intro-seal small {
+  font: italic 15px var(--font-heading);
+  color: #a08b9c;
+}
+.mobile-break {
+  display: none;
+}
+.adventure-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 285px;
+  gap: 22px;
+}
+.map-panel {
+  border: 1px solid #e5dae6;
+  border-radius: 13px;
+  overflow: hidden;
+  background: #f3edf3;
+  box-shadow: 0 5px 24px #74547a06;
+}
+.map-top {
+  height: 49px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 22px;
+  position: relative;
+  z-index: 1;
+  background: #fbf8fae8;
+  border-bottom: 1px solid #e2d7e4;
+}
+.map-top > span:first-child {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 9px;
+  letter-spacing: 1.4px;
+  font-weight: 600;
+  color: #79657f;
+}
+.map-live {
+  font-size: 9px;
+  color: #948499;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.map-live > span {
+  height: 5px;
+  width: 5px;
+  border-radius: 50%;
+  background: #9bb194;
+}
+.map-art {
+  position: relative;
+  aspect-ratio: 1.56;
+  isolation: isolate;
+  overflow: hidden;
+}
+.landscape {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.map-location {
+  position: absolute;
+  background: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  min-width: 155px;
+}
+.map-location:not(:disabled):active {
+  transform: translate(-50%, -49%);
+}
+.location-0 {
+  left: 25%;
+  top: 57%;
+}
+.location-1 {
+  left: 59.5%;
+  top: 67%;
+}
+.location-2 {
+  left: 77%;
+  top: 38%;
+}
+.location-pin {
+  border: 3px solid #fcf1de;
+  background: #795080;
+  box-shadow:
+    0 0 0 1px #c9ab84,
+    0 4px 15px #50335a33;
+  color: #fff6e5;
+  display: grid;
+  place-items: center;
+  width: 39px;
+  height: 39px;
+  border-radius: 50%;
+  margin-bottom: 9px;
+}
+.chosen .location-pin {
+  box-shadow:
+    0 0 0 5px #f7ecdc6b,
+    0 0 0 6px #c1a97d99,
+    0 5px 15px #50335a22;
+}
+.locked .location-pin {
+  background: #b6a9b8;
+  color: #f9f3f5;
+  border-color: #e6dce5;
+  box-shadow: 0 0 0 1px #b9a9be;
+}
+.location-label {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 9px 14px;
+  border: 1px solid #dac9dc;
+  background: #fcf8f3f0;
+  border-radius: 7px;
+  box-shadow: 0 4px 12px #6857700d;
+  white-space: nowrap;
+}
+.location-label small {
+  font-size: 7px;
+  letter-spacing: 1.3px;
+  color: #aa87a6;
+}
+.location-label strong {
+  font: 600 clamp(12px, 1.25vw, 17px)/1.5 var(--font-heading);
+  color: #644c6c;
+}
+.location-label > span {
+  font-size: 7px;
+  color: #9a879e;
+}
+.locked .location-label {
+  background: #f8f3f1de;
+  border-color: #d5c9d6;
+}
+.locked .location-label strong {
+  color: #8a798d;
+}
+.map-caption {
+  position: absolute;
+  bottom: 18px;
+  width: 100%;
+  text-align: center;
+  font: italic 13px var(--font-heading);
+  letter-spacing: 1px;
+  color: #9b82a3;
+}
+.map-legend {
+  display: flex;
+  align-items: center;
+  gap: 19px;
+  padding: 15px 21px;
+  background: #faf7fa;
+  border-top: 1px solid #e5dce5;
+  font-size: 9px;
+  color: #948398;
+}
+.map-legend > span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.legend-dot {
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+  background: #bdafc0;
+}
+.legend-dot.available {
+  background: #90649c;
+}
+.map-hint {
+  margin-left: auto;
+}
+.quest-panel {
+  position: relative;
+  background: #fcf9f4;
+  border: 1px solid #e7daca;
+  border-radius: 13px;
+  padding: 26px 24px 21px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 5px 20px #9a826207;
+  overflow: hidden;
+}
+.quest-panel:before,
+.quest-panel:after {
+  content: '';
+  position: absolute;
+  width: 65px;
+  height: 65px;
+  border: 1px solid #d8c3a56b;
+  transform: rotate(45deg);
+  top: -37px;
+  left: -37px;
+}
+.quest-panel:after {
+  left: auto;
+  right: -37px;
+}
+.quest-ornament {
+  color: #c9b28b;
+  font-size: 27px;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.tag {
+  font-size: 8px;
+  color: #a18b69;
+  letter-spacing: 2px;
+}
+.quest-icon {
+  margin: 18px 0 11px;
+  color: #8d6b93;
+  background: #f0e7ed;
+  border: 1px solid #e2d5e1;
+  display: grid;
+  place-items: center;
+  width: 47px;
+  height: 47px;
+  border-radius: 50%;
+}
+.quest-icon svg {
+  width: 21px;
+}
+.quest-panel h2 {
+  font: 600 28px/1.1 var(--font-heading);
+  max-width: 210px;
+  margin-bottom: 10px;
+}
+.quest-topic {
+  font-size: 9px;
+  color: #9d7c9a;
+  letter-spacing: 0.4px;
+}
+.quest-panel > p {
+  font-size: 11px;
+  line-height: 1.9;
+  color: #968797;
+  margin: 18px 0;
+}
+.quest-stats {
+  display: flex;
+  justify-content: center;
+  gap: 13px;
+  width: 100%;
+  font-size: 9px;
+  color: #928293;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e7dfd4;
+}
+.quest-stats > span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+.quest-stats svg {
+  width: 13px;
+  color: #a78c67;
+}
+.quest-stats b {
+  font-weight: 600;
+  color: #706173;
+}
+.reward {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 17px 0 20px;
+  text-align: left;
+}
+.reward > div > span {
+  font-size: 7px;
+  letter-spacing: 1.1px;
+  color: #a29380;
+  display: block;
+}
+.reward strong {
+  font: 600 29px var(--font-heading);
+  color: #9c7a47;
+}
+.reward strong small {
+  font: 10px var(--font-body);
+  color: #a79780;
+}
+.stars {
+  display: flex;
+  gap: 2px;
+  color: #c6aa73;
+}
+.stars svg {
+  width: 17px;
+  height: 17px;
+  fill: #d8bf8b;
+  stroke-width: 1;
+}
+.primary-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: #765180;
+  color: #fffaf5;
+  min-height: 43px;
+  border: 1px solid #68466f;
+  border-radius: 6px;
+  padding: 11px 16px;
+  font-size: 11px;
+  font-weight: 500;
+  box-shadow: 0 3px 8px #71517c14;
+}
+.primary-button:hover {
+  background: #64416f;
+  box-shadow: 0 4px 15px #71517c26;
+}
+.quest-panel .primary-button {
+  width: 100%;
+  margin-top: auto;
+}
+.primary-button:disabled {
+  background: #e8e1e7;
+  border-color: #ddd3dc;
+  color: #a194a1;
+  box-shadow: none;
+}
+.quest-note {
+  font-size: 8px;
+  color: #ad9d9f;
+  margin-top: 11px;
+}
+.completed-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #69826c;
+  font-size: 12px;
+  margin: auto 0 10px;
+}
+.journey-strip {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr 1fr 1fr;
+  align-items: center;
+  margin-top: 25px;
+  background: #f3edf1;
+  border: 1px solid #e9e0e6;
+  border-radius: 9px;
+  padding: 22px 23px;
+  gap: 17px;
+}
+.tiny-label {
+  font-size: 7px;
+  letter-spacing: 1.7px;
+  color: #aa8fa1;
+}
+.journey-title h3 {
+  font: 600 21px var(--font-heading);
+  margin-top: 5px;
+}
+.journey-step {
+  background: none;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 0;
+}
+.step-number {
+  display: grid;
+  place-items: center;
+  width: 31px;
+  height: 31px;
+  border: 1px solid #ddd0de;
+  color: #afa1b1;
+  border-radius: 50%;
+  font-size: 10px;
+  flex-shrink: 0;
+}
+.current .step-number {
+  color: #fff7ef;
+  background: #8e6a96;
+  border-color: #8e6a96;
+}
+.journey-step strong {
+  font-size: 9px;
+  font-weight: 500;
+  color: #8d7b92;
+  display: block;
+}
+.current strong {
+  color: #715378;
+}
+.journey-step small {
+  font-size: 7px;
+  display: block;
+  color: #b09eb1;
+  margin-top: 6px;
+}
+.wisdom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  text-align: center;
+  padding: 34px 0 30px;
+  color: #b69e85;
+}
+.wisdom > span:last-child {
+  transform: scaleX(-1);
+}
+.wisdom > span {
+  font-size: 28px;
+}
+.wisdom p {
+  font: italic 19px var(--font-heading);
+  color: #9a8498;
+}
+.wisdom small {
+  display: block;
+  font: 8px var(--font-body);
+  color: #b1a1af;
+  letter-spacing: 0.4px;
+  margin-top: 7px;
+}
+footer {
+  border-top: 1px solid var(--border);
+  padding: 20px 6%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 8px;
+  color: #ab9baa;
+}
+footer > div {
+  display: flex;
+  gap: 24px;
+}
+footer button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  color: #a291a3;
+  font-size: 8px;
+}
+.footer-divider {
+  margin: 0 10px;
+  color: #cdbdca;
+}
+.play-section {
+  max-width: 800px;
+  margin: 35px auto;
+}
+.back-button {
+  background: none;
+  color: #927d97;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  margin-bottom: 25px;
+}
+.quiz-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  font-size: 11px;
+  color: #9b879e;
+}
+.progress-track {
+  height: 5px;
+  border-radius: 5px;
+  background: #eadfe9;
+  margin: 14px 0 25px;
+  overflow: hidden;
+}
+.progress-track > span {
+  height: 100%;
+  display: block;
+  background: #ac87b1;
+}
+.question-card {
+  background: #fffaf5;
+  border: 1px solid #e3d6cc;
+  border-radius: 12px;
+  padding: 35px 40px;
+}
+.question-reward {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: #ad8b57;
+  font-size: 11px;
+}
+.question-card h1 {
+  font: 600 32px var(--font-heading);
+  text-align: center;
+  margin: 14px 0 24px;
+}
+.question-text {
+  font: 500 25px/1.5 var(--font-heading);
+  text-align: center;
+  color: #74527e;
+  max-width: 620px;
+  margin: 0 auto 26px;
+}
+.answers {
+  display: grid;
+  gap: 10px;
+}
+.answer {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-align: left;
+  padding: 15px 18px;
+  background: #fffdfb;
+  border: 1px solid #e6dce4;
+  border-radius: 7px;
+  color: #756479;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.answer > svg {
+  margin-left: auto;
+}
+.answer:hover:not(:disabled) {
+  background: #f0e7f0;
+  border-color: #b594bb;
+}
+.answer-letter {
+  display: grid;
+  place-items: center;
+  width: 29px;
+  height: 29px;
+  border: 1px solid #e0d2df;
+  border-radius: 5px;
+  font-size: 11px;
+  flex-shrink: 0;
+}
+.answer.correct {
+  border-color: #8cab8a;
+  background: #edf4e9;
+  color: #4e754b;
+}
+.answer.incorrect {
+  border-color: #cc939b;
+  background: #fae9ea;
+  color: #a05b63;
+  animation: shake 0.3s;
+}
+.feedback {
+  margin-top: 22px;
+  padding: 20px;
+  border-radius: 7px;
+  line-height: 1.8;
+  font-size: 12px;
+}
+.feedback.success {
+  background: #edf3e9;
+  color: #52774c;
+}
+.feedback.error {
+  background: #f9ecea;
+  color: #9c655f;
+}
+.feedback .primary-button {
+  margin-top: 15px;
+}
+.quiz-score {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #ad96a8;
+  gap: 12px;
+}
+.category-hint {
+  text-align: center;
+  font-size: 12px;
+  color: #9d8b9d;
+  margin: -10px 0 25px;
+}
+.category-answers {
+  grid-template-columns: 1fr 1fr;
+}
+.result-section {
+  max-width: 760px;
+  text-align: center;
+  margin: 50px auto 20px;
+  padding: 35px;
+  border: 1px solid #e5d7c8;
+  border-radius: 15px;
+  background: #fffaf4;
+}
+.result-medal {
+  display: grid;
+  place-items: center;
+  width: 85px;
+  height: 85px;
+  border: 1px solid #d5ba88;
+  border-radius: 50%;
+  margin: 0 auto 25px;
+  background: #f5ecdc;
+  color: #b18b50;
+}
+.result-section > .eyebrow {
+  justify-content: center;
+}
+.result-section h1 {
+  font: 600 45px var(--font-heading);
+  margin: 15px 0;
+}
+.result-section > p {
+  font-size: 12px;
+  color: #9b859c;
+  line-height: 1.9;
+}
+.result-stars {
+  font-size: 35px;
+  letter-spacing: 8px;
+  color: #c3a365;
+  margin-top: 25px;
+}
+.result-total {
+  font: 600 54px var(--font-heading);
+  color: #79537f;
+  margin: 10px 0;
+}
+.result-total small {
+  font: 13px var(--font-body);
+  color: #ac93a7;
+}
+.result-list {
+  margin: 25px 0;
+}
+.result-list > div {
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  padding: 16px 0;
+  border-top: 1px solid #ece0e5;
+  font-size: 12px;
+}
+.result-list small {
+  display: block;
+  font-size: 10px;
+  margin-top: 5px;
+  color: #a08b9c;
+}
+.stars-text {
+  color: #c4a264;
+}
+.result-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 28px;
+}
+.secondary-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border: 1px solid #dcccdb;
+  border-radius: 6px;
+  background: transparent;
+  color: #96789b;
+  font-size: 11px;
+}
+.secondary-button:hover {
+  background: #f2e8ef;
+}
+.help-dialog {
+  background: #fffaf5 !important;
+  border-color: #dfcfda !important;
+  color: #715576;
+  max-height: 90dvh;
+  overflow-y: auto;
+}
+.help-dialog h2 {
+  font: 600 30px var(--font-heading);
+}
+.help-dialog p,
+.help-dialog li {
+  font-size: 12px;
+  line-height: 1.9;
+  color: #927b91;
+}
+.help-dialog ol {
+  padding-left: 20px;
+  list-style: decimal;
+}
+.help-dialog li {
+  margin-bottom: 12px;
+}
+.help-dialog .primary-button {
+  margin-top: 5px;
+}
+@keyframes shake {
+  25% {
+    transform: translateX(-4px);
+  }
+  75% {
+    transform: translateX(4px);
+  }
+}
+@media (min-width: 1450px) {
+  .adventure-layout {
+    grid-template-columns: minmax(0, 1fr) 320px;
+  }
+  .quest-panel {
+    padding: 32px;
+  }
+  .quest-panel h2 {
+    font-size: 33px;
+  }
+  .quest-panel > p {
+    margin: 25px 0;
+  }
+  .quest-icon {
+    margin-top: 25px;
+  }
+  .quest-stats {
+    padding-bottom: 25px;
+  }
+  .reward {
+    padding: 22px 0;
+  }
+  .primary-button {
+    min-height: 47px;
+  }
+  .intro {
+    padding-top: 55px;
+  }
+}
+@media (max-width: 1050px) {
+  .header {
+    padding: 0 4%;
+    gap: 18px;
+  }
+  .header nav {
+    gap: 20px;
+  }
+  .header nav button {
+    font-size: 10px;
+  }
+  main {
+    padding: 0 4%;
+  }
+  .adventure-layout {
+    grid-template-columns: minmax(0, 1fr) 250px;
+    gap: 16px;
+  }
+  .quest-panel {
+    padding: 20px 17px;
+  }
+  .quest-panel h2 {
+    font-size: 25px;
+  }
+  .quest-panel > p {
+    font-size: 10px;
+    margin: 14px 0;
+  }
+  .quest-icon {
+    margin: 14px 0 10px;
+    width: 38px;
+    height: 38px;
+  }
+  .map-art {
+    aspect-ratio: 1.27;
+  }
+  .landscape {
+    height: 100%;
+    width: 123%;
+    max-width: none;
+    transform: translateX(-10%);
+  }
+  .location-0 {
+    left: 20%;
+    top: 57%;
+  }
+  .location-1 {
+    left: 60%;
+    top: 67%;
+  }
+  .location-2 {
+    left: 81%;
+    top: 39%;
+  }
+  .location-label {
+    padding: 7px 10px;
+  }
+  .location-label strong {
+    font-size: 12px;
+  }
+  .map-hint {
+    display: none !important;
+  }
+  .journey-strip {
+    padding: 17px;
+    gap: 12px;
+  }
+  .journey-title h3 {
+    font-size: 18px;
+  }
+  .journey-step {
+    gap: 7px;
+  }
+  .journey-step strong {
+    font-size: 8px;
+  }
+  .intro-seal {
+    padding: 0;
+  }
+  .intro-seal > span {
+    font-size: 7px;
+  }
+}
+@media (max-width: 760px) {
+  .header {
+    height: 78px;
+  }
+  .brand {
+    font-size: 30px;
+  }
+  .brand-icon {
+    width: 34px;
+    height: 41px;
+  }
+  .brand small {
+    font-size: 6px;
+    letter-spacing: 1.6px;
+  }
+  .header nav {
+    display: none;
+  }
+  .header-actions {
+    gap: 8px;
+  }
+  .score {
+    font-size: 15px;
+    padding: 8px 11px;
+  }
+  .score small {
+    font-size: 7px;
+  }
+  .score svg {
+    width: 16px;
+  }
+  .intro {
+    padding: 30px 0 24px;
+  }
+  .intro h1 {
+    font-size: 37px;
+    line-height: 1.1;
+    letter-spacing: -0.7px;
+  }
+  .mobile-break {
+    display: block;
+  }
+  .intro-seal {
+    display: none;
+  }
+  .eyebrow {
+    font-size: 7px;
+    letter-spacing: 1.5px;
+  }
+  .intro p {
+    font-size: 11px;
+    line-height: 1.8;
+    max-width: 360px;
+  }
+  .desktop-break {
+    display: none;
+  }
+  .adventure-layout {
+    grid-template-columns: 1fr;
+  }
+  .map-art {
+    aspect-ratio: 1.4;
+  }
+  .landscape {
+    width: 112%;
+    transform: translateX(-6%);
+  }
+  .location-0 {
+    left: 22%;
+    top: 57%;
+  }
+  .location-2 {
+    left: 80%;
+    top: 37%;
+  }
+  .location-label strong {
+    font-size: 12px;
+  }
+  .location-label > span {
+    font-size: 6px;
+  }
+  .location-label small {
+    font-size: 6px;
+  }
+  .location-pin {
+    width: 31px;
+    height: 31px;
+    border-width: 2px;
+    margin-bottom: 6px;
+  }
+  .location-pin svg {
+    width: 15px;
+  }
+  .location-label {
+    padding: 6px 8px;
+  }
+  .map-location {
+    min-width: 115px;
+  }
+  .map-top {
+    padding: 0 13px;
+    height: 42px;
+  }
+  .map-top > span:first-child {
+    font-size: 8px;
+    letter-spacing: 0.8px;
+  }
+  .map-live {
+    font-size: 8px;
+  }
+  .map-caption {
+    font-size: 11px;
+    bottom: 13px;
+  }
+  .map-legend {
+    padding: 12px 15px;
+    font-size: 8px;
+  }
+  .quest-panel {
+    padding: 23px 25px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    text-align: left;
+    align-items: start;
+    column-gap: 20px;
+  }
+  .quest-ornament {
+    display: none;
+  }
+  .tag {
+    grid-column: 1;
+  }
+  .quest-icon {
+    grid-column: 2;
+    grid-row: 1/4;
+    margin: 0;
+  }
+  .quest-panel h2 {
+    grid-column: 1;
+    font-size: 29px;
+    margin: 8px 0;
+  }
+  .quest-topic {
+    grid-column: 1;
+  }
+  .quest-panel > p {
+    grid-column: 1/3;
+    font-size: 11px;
+    margin: 13px 0;
+  }
+  .quest-stats {
+    grid-column: 1/3;
+    justify-content: flex-start;
+    padding-bottom: 15px;
+    font-size: 10px;
+  }
+  .reward {
+    grid-column: 1/3;
+    padding: 14px 0;
+  }
+  .quest-panel .primary-button,
+  .quest-note,
+  .completed-label {
+    grid-column: 1/3;
+  }
+  .quest-note {
+    text-align: center;
+  }
+  .journey-strip {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    gap: 6px;
+    margin-top: 18px;
+  }
+  .journey-title {
+    padding-bottom: 12px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #e3d7e3;
+  }
+  .journey-title h3 {
+    font-size: 23px;
+  }
+  .journey-step {
+    padding: 9px 0;
+    gap: 12px;
+  }
+  .journey-step strong {
+    font-size: 11px;
+  }
+  .journey-step small {
+    font-size: 9px;
+  }
+  .step-number {
+    width: 34px;
+    height: 34px;
+  }
+  .wisdom {
+    gap: 15px;
+    padding: 27px 0;
+  }
+  .wisdom p {
+    font-size: 17px;
+  }
+  .wisdom small {
+    font-size: 7px;
+  }
+  footer {
+    padding: 18px 4%;
+    gap: 18px;
+    flex-wrap: wrap;
+    font-size: 7px;
+  }
+  footer > div {
+    gap: 18px;
+  }
+  .question-card {
+    padding: 25px 18px;
+  }
+  .question-card h1 {
+    font-size: 27px;
+  }
+  .question-text {
+    font-size: 23px;
+  }
+  .quiz-top {
+    font-size: 9px;
+    align-items: flex-start;
+  }
+  .quiz-top .eyebrow {
+    max-width: 60%;
+    line-height: 1.8;
+  }
+  .answer {
+    font-size: 12px;
+    padding: 12px;
+    gap: 10px;
+  }
+  .category-answers {
+    grid-template-columns: 1fr;
+  }
+  .result-section {
+    padding: 25px 18px;
+    margin-top: 30px;
+  }
+  .result-section h1 {
+    font-size: 36px;
+  }
+  .result-total {
+    font-size: 45px;
+  }
+  .result-actions {
+    flex-direction: column;
+  }
+  .result-list > div {
+    font-size: 10px;
+    gap: 8px;
+  }
+  .result-list .stars-text {
+    font-size: 13px;
+  }
+  .result-list b {
+    white-space: nowrap;
+  }
+  .quiz-score {
+    font-size: 9px;
+  }
+  .result-section > .eyebrow {
+    font-size: 7px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *:before,
+  *:after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Illustrated storybook layer: native SVG stays crisp at every screen size. */
+.intro {
+  position: relative;
+  min-height: 285px;
+}
+.intro > div:first-child {
+  position: relative;
+  z-index: 1;
+}
+.intro-art {
+  width: clamp(250px, 32vw, 410px);
+  flex-shrink: 0;
+  align-self: center;
+  margin: -27px -8px -18px 12px;
+  text-align: center;
+}
+.story-garden {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.intro-art > span {
+  display: block;
+  margin-top: -7px;
+  color: #947b8e;
+  font: italic 16px var(--font-heading);
+}
+.realm-illustration {
+  display: block;
+  width: 100%;
+  max-width: 270px;
+  height: auto;
+  margin: -12px auto 15px;
+  flex-shrink: 0;
+}
+.quest-panel .quest-icon {
+  display: none;
+}
+.quest-panel {
+  background: radial-gradient(ellipse at 50% 0%, #f1e2e4, transparent 65%), #fcf9f4;
+}
+.quest-panel h2 {
+  margin-top: 12px;
+}
+.question-card > .realm-illustration {
+  max-width: 205px;
+  margin-top: -20px;
+  margin-bottom: 18px;
+}
+.result-section > .realm-illustration {
+  max-width: 300px;
+  margin-bottom: 12px;
+}
+.map-panel {
+  box-shadow: 0 8px 30px #74547a0c;
+}
+@media (max-width: 1050px) and (min-width: 761px) {
+  .intro-art {
+    width: 270px;
+  }
+}
+@media (max-width: 760px) {
+  .intro {
+    display: block;
+    min-height: auto;
+    padding-bottom: 12px;
+    overflow: hidden;
+  }
+  .intro-art {
+    width: 265px;
+    margin: -12px auto 2px;
+  }
+  .intro-art > span {
+    font-size: 14px;
+  }
+  .quest-panel > .realm-illustration {
+    grid-column: 2;
+    grid-row: 1 / 4;
+    width: 120px;
+    margin: 2px -10px 0 0;
+    align-self: center;
+  }
+  .quest-panel {
+    grid-template-columns: minmax(0, 1fr) 110px;
+    column-gap: 10px;
+  }
+  .quest-panel h2 {
+    font-size: 27px;
+  }
+}
+@media (max-width: 360px) {
+  .quest-panel > .realm-illustration {
+    width: 95px;
+  }
+  .quest-panel {
+    grid-template-columns: minmax(0, 1fr) 85px;
+    padding-inline: 18px;
+  }
+}
+
+body { margin: 0; font-family: var(--font-body); }
+a { color: inherit; }
+dialog { width: min(500px, calc(100% - 32px)); border: 1px solid #dfcfda; border-radius: 14px; padding: 28px; color: #715576; background: #fffaf5; }
+dialog::backdrop { background: #30203780; }
+dialog p, dialog li { font-size: 13px; line-height: 1.9; }
+dialog h2 { font: 600 30px var(--font-heading); margin-bottom: 15px; }
+.dialog-actions { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+.header-actions button { white-space: nowrap; }
+.result-stars { display: block; }
+:root { --font-heading: 'Cormorant Garamond', Georgia, serif; --font-body: 'DM Sans', 'Trebuchet MS', sans-serif; }
+</style>
+</head>
+<body>
+<div class="app-shell">
+<header class="header">
+<a class="brand" href="#" data-action="map" aria-label="Laman utama Hikayat"><span class="brand-icon" aria-hidden="true">✦</span><span>hikayat<span class="brand-dot">.</span><small>PENGEMBARAAN BAHASA</small></span></a>
+<nav aria-label="Navigasi utama"><button data-action="map">Peta Pengembaraan</button><button data-action="help">Cara Bermain</button></nav>
+<div class="header-actions"><div class="score"><span id="score">0</span><small>MATA</small></div><button class="icon-button" id="sound" data-action="sound" aria-pressed="true" aria-label="Matikan bunyi">Bunyi</button></div>
+</header>
+<main id="main"></main>
+<footer><span>Hikayat · Merayakan indahnya bahasa Melayu.</span><div><button data-action="help">Panduan</button><button data-action="reset">Mula semula</button></div></footer>
+</div>
+<dialog id="help" aria-labelledby="help-title"><h2 id="help-title">Panduan Pengembara</h2><p>Jelajahi tiga alam fantasi Melayu, setiap satunya mengandungi lima soalan.</p><ol><li><b>Puncak Gunung Mistik:</b> Pilih maksud peribahasa. Jawapan betul: 100 mata.</li><li><b>Lembah Bayang Mutiara:</b> Padankan situasi dengan peribahasa. Jawapan betul: 150 mata.</li><li><b>Istana Melaka Fantasi:</b> Kelaskan pepatah dan simpulan bahasa. Jawapan betul: 200 mata.</li></ol><p>Selesaikan peringkat untuk membuka alam seterusnya tanpa markah minimum. Bintang: 0–2 betul = 1, 3–4 betul = 2, 5 betul = 3. Markah maksimum ialah 2,250, tanpa bonus masa.</p><p>Gelaran: 2,000+ Mahaguru Peribahasa; 1,400+ Pendeta Mistik; selainnya Pahlawan Bahasa.</p><p>Kembali ke peta meninggalkan peringkat yang belum selesai. Markah peringkat selesai kekal sepanjang halaman ini dibuka. Muat semula halaman memulakan permainan baharu.</p><div class="dialog-actions"><button class="primary-button" data-close="help">Sedia Mengembara</button></div></dialog>
+<dialog id="reset" aria-labelledby="reset-title"><h2 id="reset-title">Mulakan kisah baharu?</h2><p>Semua markah dan kemajuan semasa akan dipadamkan.</p><div class="dialog-actions"><button class="secondary-button" data-close="reset">Batal</button><button class="primary-button" data-action="confirm-reset">Ya, Mula Semula</button></div></dialog>
+<noscript><p>Aktifkan JavaScript untuk bermain kuiz Hikayat.</p></noscript>
+<script>
+'use strict';
+const stages = [{"name":"Puncak Gunung Mistik","topic":"Maksud Pepatah","points":100,"desc":"Daki puncak ilmu dan singkap makna di sebalik pepatah Melayu."},{"name":"Lembah Bayang Mutiara","topic":"Pepatah & Situasi","points":150,"desc":"Susuri lembah misteri dan padankan situasi dengan pepatah yang tepat."},{"name":"Istana Melaka Fantasi","topic":"Pepatah atau Simpulan Bahasa","points":200,"desc":"Buktikan kebijaksanaanmu dengan mengasingkan ungkapan di istana diraja."}];
+const questions = [[{"text":"Apakah maksud “alah bisa tegal biasa”?","options":["Pekerjaan yang sukar menjadi mudah apabila selalu dilakukan","Bersaing untuk menjadi yang terbaik","Sentiasa berselisih faham","Hidup tanpa pertolongan orang lain"],"answer":0,"explanation":"Sesuatu yang susah akan menjadi senang jika kita kerap mempraktikkannya."},{"text":"Apakah maksud “hendak seribu daya, tak hendak seribu dalih?”?","options":["Melakukan kerja dengan tergesa-gesa","Orang yang berusaha akan mencari jalan","Membazirkan harta kekayaan","Menyembunyikan sesuatu rahsia"],"answer":1,"explanation":"Orang yang benar-benar mahukan sesuatu akan sentiasa mencari jalan penyelesaian, manakal yang malas akan memberikan pelbagai alasan."},{"text":"Apakah maksud 'yang baik dijadikan teladan, yang buruk dijadikan sempadan'?","options":["Mencontohi perkara baik dan menghindari perkara buruk","Gunung terbentuk dalam sehari","Kejayaan hanya bergantung pada nasib","Sesuatu yang banyak akan berkurangan"],"answer":0,"explanation":"Kita perlulah mengambil iktibar daripada perkara yang baik dan menjauhi sifat-sifat negatif."},{"text":"Apakah maksud “terlajak perahu boleh di undur, terlajak kata buruk padahnya”?","options":["Seorang yang sangat pemalu","Orang yang suka mengembara","Berhati-hati ketika bercakap","Seorang yang rajin bekerja"],"answer":2,"explanation":"Kata-kata yang menyakitkan hati sukar ditarik balik, jadi berhati-hatilah sebelum bercakap."},{"text":"Apakah maksud “ukur baju di badan sendiri”?","options":["Meniru cara hidup orang lain","Berbelanja mengikut kemampuan sendiri","Memilih pakaian yang mahal","Mengutamakan kecantikan diri"],"answer":1,"explanation":"Bertindak dan berbelanjalah mengikut kemampuan diri sendiri."}],[{"text":"Penduduk kampung bekerjasama membaiki jambatan yang rosak. Pepatah manakah paling sesuai?","options":["Bagai pinang dibelah dua","Berat sama dipikul, ringan sama dijinjing","Sudah jatuh ditimpa tangga","Seperti pahat dengan penukul"],"answer":1,"explanation":"Kerjasama bermaksud berkongsi tanggungjawab dalam keadaan susah mahupun senang."},{"text":"Aina terus berlatih menari walaupun sering tersilap sehingga akhirnya berjaya. Pilih pepatah yang tepat.","options":["Di mana ada kemahuan, di situ ada jalan","Air dicencang tidak akan putus","Yang baik dijadikan teladan, yang buruk dijadikan sempadan","Harapkan pagar, pagar makan padi"],"answer":0,"explanation":"Kemahuan yang kuat mendorong seseorang mencari jalan untuk berjaya."},{"text":"Pak Bakar mengajar anaknya berbudi bahasa sejak kecil. Apakah pepatah yang sesuai?","options":["Nasi sudah menjadi bubur","Malu bertanya sesat jalan","Melentur buluh biarlah dari rebungnya","Ingat sebelum kena, jimat sebelum habis"],"answer":2,"explanation":"Didikan yang baik hendaklah dimulakan sejak seseorang masih kecil."},{"text":"Syafiq mencontohi sikap abangnya yang rajin belajar dan tidak mengikut sikap abangnya yang malas mengemas bilik. Pilih pepatah yang paling tepat.","options":["Sesal dahulu pendapatan, sesal kemudian tidak berguna","Yang baik dijadikan teladan, yang buruk dijadikan sempadan","Sambil menyelam minum air","Alah bisa tegal biasa"],"answer":1,"explanation":"Mencontohi perkara yang baik dan menjauhi perkara yang buruk"},{"text":"Aliya tidak membeli telefon model terbaru kerana dia tidak mampu. Apakah pepatah yang sesuai?","options":["Di mana ada kemahuan di situ ada jalan","Biar lambat asalkan selamat","Ukur baju di badan sendiri","alah bisa, tegal biasa"],"answer":2,"explanation":"Membeli sesuatu mengikut kemampuan diri."}],[{"text":"Ringan tulang","options":["Simpulan Bahasa","Pepatah"],"answer":0,"explanation":"“Ringan tulang” ialah simpulan bahasa yang bermaksud rajin membantu."},{"text":"Ingat sebelum kena, jimat sebelum habis","options":["Simpulan Bahasa","Pepatah"],"answer":1,"explanation":"Pepatah ini menasihatkan kita supaya berwaspada dan berjimat-cermat sebelum susah."},{"text":"Buah tangan","options":["Simpulan Bahasa","Pepatah"],"answer":0,"explanation":"“Buah tangan” ialah simpulan bahasa yang bermaksud hadiah yang dibawa untuk seseorang."},{"text":"Sesal dahulu pendapatan, sesal kemudian tidak berguna","options":["Simpulan Bahasa","Pepatah"],"answer":1,"explanation":"Pepatah ini mengingatkan kita supaya berfikir sebelum melakukan sesuatu."},{"text":"Besar hati","options":["Simpulan Bahasa","Pepatah"],"answer":0,"explanation":"“Besar hati” ialah simpulan bahasa yang bermaksud berasa bangga atau gembira."}]];
+const landscape = "<svg class=\"landscape\" viewBox=\"0 0 1000 650\" fill=\"none\" aria-hidden=\"true\"><defs><linearGradient id=\"sea\" x2=\"1\" y2=\"1\"><stop stop-color=\"#f5e9ee\"></stop><stop offset=\"1\" stop-color=\"#e8ddf1\"></stop></linearGradient><linearGradient id=\"land\" x2=\"0\" y2=\"1\"><stop stop-color=\"#e4ddc7\"></stop><stop offset=\"1\" stop-color=\"#b6bea8\"></stop></linearGradient><linearGradient id=\"mountain\" x2=\"1\" y2=\"1\"><stop stop-color=\"#9e82ad\"></stop><stop offset=\"1\" stop-color=\"#54466d\"></stop></linearGradient><radialGradient id=\"mist\"><stop stop-color=\"#fffaf5\" stop-opacity=\".9\"></stop><stop offset=\"1\" stop-color=\"#fffaf5\" stop-opacity=\"0\"></stop></radialGradient><pattern id=\"waves\" width=\"70\" height=\"45\" patternUnits=\"userSpaceOnUse\"><path d=\"M5 22q10-7 20 0t20 0\" stroke=\"#baa8c5\" stroke-opacity=\".26\"></path></pattern><filter id=\"shadow\"><feDropShadow dx=\"0\" dy=\"12\" stdDeviation=\"12\" flood-color=\"#695479\" flood-opacity=\".16\"></feDropShadow></filter><g id=\"tree\"><path d=\"M0 13v16\" stroke=\"#716a61\" stroke-width=\"3\"></path><path d=\"M0-15l-13 25h6l-11 12h36L7 10h6Z\" fill=\"#7c977f\"></path><path d=\"M0-15V22h18L7 10h6Z\" fill=\"#667e70\"></path></g><g id=\"pinktree\"><path d=\"M0 0v30\" stroke=\"#806571\" stroke-width=\"3\"></path><circle cy=\"-4\" r=\"14\" fill=\"#c29aaa\"></circle><circle cx=\"-10\" cy=\"4\" r=\"12\" fill=\"#cda6b5\"></circle><circle cx=\"10\" cy=\"5\" r=\"12\" fill=\"#b88eaa\"></circle></g><g id=\"house\"><path d=\"M-24 0v27h48V0\" fill=\"#b8967d\"></path><path d=\"M-35 3Q-15-7 0-26Q15-7 35 3Z\" fill=\"#705071\" stroke=\"#dcc49c\" stroke-width=\"2\"></path><path d=\"M-7 27V10H7v17\" fill=\"#67485c\"></path><path d=\"M-23 27v10m46-10v10\" stroke=\"#826452\" stroke-width=\"3\"></path></g></defs><rect width=\"1000\" height=\"650\" fill=\"url(#sea)\"></rect><rect width=\"1000\" height=\"650\" fill=\"url(#waves)\"></rect><path d=\"M90 300Q29 239 127 184Q90 129 206 142Q244 77 339 124Q414 59 494 112Q564 71 625 147Q739 115 776 188Q877 169 879 260Q962 287 888 359Q943 417 847 456Q833 546 725 520Q652 592 554 541Q456 583 409 525Q311 555 260 484Q142 505 138 429Q56 407 90 300Z\" fill=\"#d2c6bd\" opacity=\".5\" transform=\"translate(0 14)\"></path><path d=\"M90 300Q29 239 127 184Q90 129 206 142Q244 77 339 124Q414 59 494 112Q564 71 625 147Q739 115 776 188Q877 169 879 260Q962 287 888 359Q943 417 847 456Q833 546 725 520Q652 592 554 541Q456 583 409 525Q311 555 260 484Q142 505 138 429Q56 407 90 300Z\" fill=\"url(#land)\" stroke=\"#eee4ce\" stroke-width=\"7\" filter=\"url(#shadow)\"></path><path d=\"M244 440Q288 361 393 375T548 302Q598 253 664 286T787 214\" stroke=\"#e8d9b4\" stroke-width=\"14\" stroke-linecap=\"round\"></path><path d=\"M244 440Q288 361 393 375T548 302Q598 253 664 286T787 214\" stroke=\"#9d7b8f\" stroke-width=\"2\" stroke-dasharray=\"5 9\" stroke-linecap=\"round\"></path><path d=\"M500 160Q447 218 491 268T459 375Q452 405 510 464T530 542\" stroke=\"#a5b8bc\" stroke-width=\"24\"></path><path d=\"M500 160Q447 218 491 268T459 375Q452 405 510 464T530 542\" stroke=\"#d0d7d4\" stroke-width=\"9\"></path><use href=\"#tree\" transform=\"translate(157 250) scale(1.1)\"></use><use href=\"#tree\" transform=\"translate(189 230) scale(0.8)\"></use><use href=\"#tree\" transform=\"translate(130 284) scale(0.8)\"></use><use href=\"#tree\" transform=\"translate(184 294) scale(1.1)\"></use><use href=\"#tree\" transform=\"translate(215 275) scale(0.8)\"></use><use href=\"#tree\" transform=\"translate(359 179) scale(0.8)\"></use><use href=\"#tree\" transform=\"translate(398 158) scale(1.1)\"></use><use href=\"#tree\" transform=\"translate(432 191) scale(0.8)\"></use><use href=\"#tree\" transform=\"translate(355 224) scale(0.8)\"></use><use href=\"#tree\" transform=\"translate(393 214) scale(1.1)\"></use><use href=\"#tree\" transform=\"translate(340 457) scale(0.8)\"></use><use href=\"#tree\" transform=\"translate(375 474) scale(0.8)\"></use><use href=\"#tree\" transform=\"translate(409 449) scale(1.1)\"></use><use href=\"#tree\" transform=\"translate(621 414) scale(0.8)\"></use><use href=\"#tree\" transform=\"translate(652 447) scale(0.8)\"></use><use href=\"#tree\" transform=\"translate(683 417) scale(1.1)\"></use><use href=\"#tree\" transform=\"translate(727 462) scale(0.8)\"></use><use href=\"#tree\" transform=\"translate(756 438) scale(0.8)\"></use><use href=\"#tree\" transform=\"translate(805 392) scale(1.1)\"></use><use href=\"#tree\" transform=\"translate(839 359) scale(0.8)\"></use><use href=\"#tree\" transform=\"translate(794 332) scale(0.8)\"></use><use href=\"#tree\" transform=\"translate(619 192) scale(1.1)\"></use><use href=\"#tree\" transform=\"translate(651 175) scale(0.8)\"></use><use href=\"#tree\" transform=\"translate(696 182) scale(0.8)\"></use><use href=\"#tree\" transform=\"translate(710 220) scale(1.1)\"></use><path d=\"M167 352L256 173l110 179Z\" fill=\"url(#mountain)\"></path><path d=\"M256 173l110 179h-96l-14-179Z\" fill=\"#665477\"></path><path d=\"M222 241l34-68 43 70-29-11-15 17-13-21Z\" fill=\"#f3e6e8\"></path><path d=\"M128 354l68-117 71 117Z\" fill=\"#a78dab\"></path><path d=\"M289 352l55-98 64 98Z\" fill=\"#9b86a3\"></path><ellipse cx=\"250\" cy=\"340\" rx=\"160\" ry=\"37\" fill=\"url(#mist)\"></ellipse><ellipse cx=\"299\" cy=\"271\" rx=\"89\" ry=\"20\" fill=\"url(#mist)\"></ellipse><path d=\"M514 329q48-84 93-17q43-47 85 18l-16 38H520Z\" fill=\"#b4a8bd\"></path><ellipse cx=\"599\" cy=\"349\" rx=\"70\" ry=\"25\" fill=\"#cfdfdb\"></ellipse><ellipse cx=\"599\" cy=\"349\" rx=\"45\" ry=\"14\" fill=\"#b7ced0\"></ellipse><use href=\"#pinktree\" transform=\"translate(535 319) scale(.9)\"></use><use href=\"#pinktree\" transform=\"translate(657 330) scale(.9)\"></use><use href=\"#pinktree\" transform=\"translate(694 359) scale(.9)\"></use><use href=\"#pinktree\" transform=\"translate(577 398) scale(.9)\"></use><use href=\"#pinktree\" transform=\"translate(745 271) scale(.9)\"></use><use href=\"#pinktree\" transform=\"translate(799 248) scale(.9)\"></use><use href=\"#pinktree\" transform=\"translate(841 278) scale(.9)\"></use><g transform=\"translate(748 239)\"><path d=\"M-61 7h122v47H-61Z\" fill=\"#c7a984\"></path><use href=\"#house\" transform=\"translate(-48 5) scale(.9)\"></use><use href=\"#house\" transform=\"translate(48 5) scale(.9)\"></use><use href=\"#house\" transform=\"translate(0 -13) scale(1.5)\"></use><path d=\"M-82 58H82M-91 65H91\" stroke=\"#af9683\" stroke-width=\"7\"></path><path d=\"M0-61v-18m0 0l17 7-17 4\" stroke=\"#b08b52\" stroke-width=\"2\"></path></g><use href=\"#house\" transform=\"translate(337 419) scale(.65)\"></use><path d=\"M455 361l33-6m-35-3l33-6m-31-3l30-6\" stroke=\"#907767\" stroke-width=\"7\"></path><g stroke=\"#8d769a\" opacity=\".6\"><path d=\"M89 84v50m-25-25h50M89 85l7 23-7 26-7-26Z\"></path><circle cx=\"89\" cy=\"109\" r=\"32\"></circle><path d=\"M89 69v10m0 60v10m-40-40h10m60 0h10\"></path></g><text x=\"84\" y=\"65\" fill=\"#8d769a\" font-size=\"12\" font-family=\"serif\">U</text><g fill=\"#8e7599\" opacity=\".5\"><path d=\"M850 105q8-8 16 0q8-8 16 0q-8-4-16 4-8-8-16-4Z\"></path><path d=\"M824 125q6-6 12 0q6-6 12 0q-6-3-12 3-6-6-12-3Z\"></path></g><text x=\"81\" y=\"550\" fill=\"#a48aa6\" font-size=\"17\" font-style=\"italic\" font-family=\"Georgia\" transform=\"rotate(-8 81 550)\">Selat Seribu Kisah</text><g transform=\"translate(879 539)\" stroke=\"#9e83a3\" opacity=\".65\"><circle r=\"30\"></circle><path d=\"M0-40L8-8 40 0 8 8 0 40-8 8-40 0-8-8Z\"></path><path d=\"M0-30V30M-30 0H30\"></path></g><g transform=\"translate(172 506)\"><path d=\"M-34 0q35 30 70-2l-10 20h-45Z\" fill=\"#8a647c\"></path><path d=\"M0-63V0m-3-59L-31-7h28Z\" stroke=\"#b89567\" stroke-width=\"2\" fill=\"#f7e8cc\"></path><path d=\"M5-54 29-8H5Z\" fill=\"#d6b2b9\"></path><path d=\"M-37 28q36 6 77-2m-63 9h38\" stroke=\"#bba3bc\" stroke-width=\"2\" stroke-linecap=\"round\"></path></g><g fill=\"#dcb0bd\" stroke=\"#af839c\" stroke-width=\"1.5\"><g transform=\"translate(577 351)\"><ellipse cy=\"4\" rx=\"12\" ry=\"3\" fill=\"#8da79a\" stroke=\"none\"></ellipse><path d=\"M0 3Q-15-5-9-9L0-3Q-2-17 2-15 10-9 4-3 16-10 13-3L0 3Z\"></path></g><g transform=\"translate(623 347)\"><ellipse cy=\"4\" rx=\"12\" ry=\"3\" fill=\"#8da79a\" stroke=\"none\"></ellipse><path d=\"M0 3Q-15-5-9-9L0-3Q-2-17 2-15 10-9 4-3 16-10 13-3L0 3Z\"></path></g><g transform=\"translate(610 363)\"><ellipse cy=\"4\" rx=\"12\" ry=\"3\" fill=\"#8da79a\" stroke=\"none\"></ellipse><path d=\"M0 3Q-15-5-9-9L0-3Q-2-17 2-15 10-9 4-3 16-10 13-3L0 3Z\"></path></g></g><g stroke=\"#a57b9b\" stroke-width=\"2\" fill=\"#d2a3b9\"><g transform=\"translate(387 307) rotate(-15)\"><path d=\"M0 0Q-22-22-19-4-16 9 0 0Q20-23 19-5 17 8 0 0\"></path><path d=\"m0-4 1 10\"></path></g><g transform=\"translate(717 376) rotate(-15)\"><path d=\"M0 0Q-22-22-19-4-16 9 0 0Q20-23 19-5 17 8 0 0\"></path><path d=\"m0-4 1 10\"></path></g><g transform=\"translate(283 140) rotate(-15)\"><path d=\"M0 0Q-22-22-19-4-16 9 0 0Q20-23 19-5 17 8 0 0\"></path><path d=\"m0-4 1 10\"></path></g></g><path d=\"M544 470q-22-18-28-5 5 11 28 5m0 0q22-18 28-5-5 11-28 5\" fill=\"#c79bb0\"></path><ellipse cx=\"80\" cy=\"380\" rx=\"130\" ry=\"60\" fill=\"url(#mist)\"></ellipse><ellipse cx=\"917\" cy=\"192\" rx=\"150\" ry=\"60\" fill=\"url(#mist)\"></ellipse></svg>";
+const garden = "<svg class=\"story-garden\" viewBox=\"0 0 440 270\" fill=\"none\" aria-hidden=\"true\"><circle cx=\"245\" cy=\"127\" r=\"105\" fill=\"#ecdee7\"></circle><circle cx=\"245\" cy=\"127\" r=\"94\" stroke=\"#c4a471\" stroke-dasharray=\"2 7\"></circle><circle cx=\"290\" cy=\"70\" r=\"31\" fill=\"#e2c18b\"></circle><path d=\"M103 211 194 83l82 128Z\" fill=\"#b6a2bf\"></path><path d=\"m194 83 82 128h-67Z\" fill=\"#8c719d\"></path><path d=\"m172 114 22-31 24 37-21-9-10 10Z\" fill=\"#faf0e4\"></path><path d=\"M68 217q90-75 164-23t158 17v30H68Z\" fill=\"#a7b49c\"></path><path d=\"M155 241q65-43 129-24t104 0\" stroke=\"#e6d5b2\" stroke-width=\"8\"></path><g stroke=\"#596f60\" stroke-width=\"2\"><path d=\"M78 241Q40 155 70 91M86 242q3-66 35-104M355 245q42-73 22-136\"></path><g transform=\"translate(64 131)\"><path d=\"M0 0q-38-29-34-47Q2-34 0 0\" fill=\"#7e9781\"></path><path d=\"M0 0q36-40 43-32Q31-5 0 0\" fill=\"#9ead91\"></path></g><g transform=\"translate(66 155)\"><path d=\"M0 0q-38-29-34-47Q2-34 0 0\" fill=\"#7e9781\"></path><path d=\"M0 0q36-40 43-32Q31-5 0 0\" fill=\"#9ead91\"></path></g><g transform=\"translate(68 179)\"><path d=\"M0 0q-38-29-34-47Q2-34 0 0\" fill=\"#7e9781\"></path><path d=\"M0 0q36-40 43-32Q31-5 0 0\" fill=\"#9ead91\"></path></g><g transform=\"translate(70 203)\"><path d=\"M0 0q-38-29-34-47Q2-34 0 0\" fill=\"#7e9781\"></path><path d=\"M0 0q36-40 43-32Q31-5 0 0\" fill=\"#9ead91\"></path></g><path d=\"M365 184q-40-22-35-48 32 9 35 48M377 154q37-18 32-40-29 10-32 40M355 217q-37-13-33-35 28 2 33 35M368 197q43-8 47-35-31 1-47 35\" fill=\"#7e9781\"></path></g><g transform=\"translate(227 135)\"><path d=\"M-40 28q-34-1-57 30 51 5 78-21\" fill=\"#513b63\"></path><path d=\"M-18 37q-20 25-38 45l22-4 31-33\" fill=\"#e6c99b\"></path><path d=\"M-35 17q-7-33 19-45Q3-40 15-22q8 10 4 29-6 33-42 40-15 2-12-30\" fill=\"#584167\"></path><path d=\"M-27 2q-4 26 20 30-13 17-29 8-18-15 9-38\" fill=\"#f6e9d6\"></path><path d=\"M9-26q18-18 36-1L14-15\" fill=\"#d9a15f\"></path><path d=\"M10-29q3-25 24-24l-5 12 22 16Z\" fill=\"#bd755e\"></path><path d=\"M15-23h28\" stroke=\"#6d4b59\" stroke-width=\"1.5\"></path><circle cx=\"7\" cy=\"-22\" r=\"3\" fill=\"#fff5de\"></circle><circle cx=\"8\" cy=\"-22\" r=\"1.5\" fill=\"#403549\"></circle><path d=\"m-12 46-2 10m-12-8-3 10\" stroke=\"#b78b58\" stroke-width=\"3\"></path></g><path d=\"M136 196q54-17 132-10\" stroke=\"#796354\" stroke-width=\"5\" stroke-linecap=\"round\"></path><g transform=\"translate(101 209) scale(1)\"><path transform=\"rotate(0)\" d=\"M0 0C-34-7-26-37-11-30 0-37 16-19 0 0\" fill=\"#d895a7\" stroke=\"#a76584\" stroke-width=\"1\"></path><path transform=\"rotate(72)\" d=\"M0 0C-34-7-26-37-11-30 0-37 16-19 0 0\" fill=\"#d895a7\" stroke=\"#a76584\" stroke-width=\"1\"></path><path transform=\"rotate(144)\" d=\"M0 0C-34-7-26-37-11-30 0-37 16-19 0 0\" fill=\"#d895a7\" stroke=\"#a76584\" stroke-width=\"1\"></path><path transform=\"rotate(216)\" d=\"M0 0C-34-7-26-37-11-30 0-37 16-19 0 0\" fill=\"#d895a7\" stroke=\"#a76584\" stroke-width=\"1\"></path><path transform=\"rotate(288)\" d=\"M0 0C-34-7-26-37-11-30 0-37 16-19 0 0\" fill=\"#d895a7\" stroke=\"#a76584\" stroke-width=\"1\"></path><path d=\"m0 0 10-22\" stroke=\"#e3be78\" stroke-width=\"3\"></path><circle cx=\"10\" cy=\"-22\" r=\"3\" fill=\"#f2d89d\"></circle></g><g transform=\"translate(338 220) scale(0.85)\"><path transform=\"rotate(0)\" d=\"M0 0C-34-7-26-37-11-30 0-37 16-19 0 0\" fill=\"#bb758d\" stroke=\"#a76584\" stroke-width=\"1\"></path><path transform=\"rotate(72)\" d=\"M0 0C-34-7-26-37-11-30 0-37 16-19 0 0\" fill=\"#bb758d\" stroke=\"#a76584\" stroke-width=\"1\"></path><path transform=\"rotate(144)\" d=\"M0 0C-34-7-26-37-11-30 0-37 16-19 0 0\" fill=\"#bb758d\" stroke=\"#a76584\" stroke-width=\"1\"></path><path transform=\"rotate(216)\" d=\"M0 0C-34-7-26-37-11-30 0-37 16-19 0 0\" fill=\"#bb758d\" stroke=\"#a76584\" stroke-width=\"1\"></path><path transform=\"rotate(288)\" d=\"M0 0C-34-7-26-37-11-30 0-37 16-19 0 0\" fill=\"#bb758d\" stroke=\"#a76584\" stroke-width=\"1\"></path><path d=\"m0 0 10-22\" stroke=\"#e3be78\" stroke-width=\"3\"></path><circle cx=\"10\" cy=\"-22\" r=\"3\" fill=\"#f2d89d\"></circle></g><g transform=\"translate(121 115) scale(0.55)\"><path transform=\"rotate(0)\" d=\"M0 0C-34-7-26-37-11-30 0-37 16-19 0 0\" fill=\"#d895a7\" stroke=\"#a76584\" stroke-width=\"1\"></path><path transform=\"rotate(72)\" d=\"M0 0C-34-7-26-37-11-30 0-37 16-19 0 0\" fill=\"#d895a7\" stroke=\"#a76584\" stroke-width=\"1\"></path><path transform=\"rotate(144)\" d=\"M0 0C-34-7-26-37-11-30 0-37 16-19 0 0\" fill=\"#d895a7\" stroke=\"#a76584\" stroke-width=\"1\"></path><path transform=\"rotate(216)\" d=\"M0 0C-34-7-26-37-11-30 0-37 16-19 0 0\" fill=\"#d895a7\" stroke=\"#a76584\" stroke-width=\"1\"></path><path transform=\"rotate(288)\" d=\"M0 0C-34-7-26-37-11-30 0-37 16-19 0 0\" fill=\"#d895a7\" stroke=\"#a76584\" stroke-width=\"1\"></path><path d=\"m0 0 10-22\" stroke=\"#e3be78\" stroke-width=\"3\"></path><circle cx=\"10\" cy=\"-22\" r=\"3\" fill=\"#f2d89d\"></circle></g><g fill=\"#b5945e\"><path d=\"m118 58 3 8 8 3-8 3-3 8-3-8-8-3 8-3ZM337 88l3 7 7 3-7 3-3 7-3-7-7-3 7-3Z\"></path><circle cx=\"151\" cy=\"90\" r=\"2\"></circle><circle cx=\"317\" cy=\"145\" r=\"2\"></circle></g><path d=\"M48 249q161 15 352-1\" stroke=\"#c6ae88\"></path></svg>";
+const realms = ["<svg class=\"realm-illustration\" viewBox=\"0 0 300 125\" fill=\"none\" aria-hidden=\"true\"><circle cx=\"155\" cy=\"58\" r=\"50\" fill=\"#eddfdf\"></circle><circle cx=\"191\" cy=\"33\" r=\"16\" fill=\"#dfbd82\"></circle><path d=\"M9 112q49-40 103-17t98-8q42-23 81 25Z\" fill=\"#c4c9ad\"></path><path d=\"m65 107 73-94 75 94Z\" fill=\"#a48bb2\"></path><path d=\"m138 13 75 94h-59Z\" fill=\"#71557f\"></path><path d=\"m115 43 23-30 26 33-25-9-9 12Z\" fill=\"#faf0e8\"></path><path d=\"m174 107 38-61 41 61Z\" fill=\"#bda6c2\"></path><path d=\"M61 94q49-8 98 0t82-3M91 71q41-6 76 0\" stroke=\"#faf0e8\" stroke-width=\"6\" stroke-linecap=\"round\" opacity=\".65\"></path><g transform=\"translate(40 97)\"><path d=\"M0 12v-33\" stroke=\"#7c7360\" stroke-width=\"2\"></path><path d=\"M0-35Q-23-23-12-5L0 0l12-5Q23-23 0-35\" fill=\"#7d927d\"></path><path d=\"M0-25V0\" stroke=\"#a6b29a\"></path></g><g transform=\"translate(260 97)\"><path d=\"M0 12v-33\" stroke=\"#7c7360\" stroke-width=\"2\"></path><path d=\"M0-35Q-23-23-12-5L0 0l12-5Q23-23 0-35\" fill=\"#7d927d\"></path><path d=\"M0-25V0\" stroke=\"#a6b29a\"></path></g><path d=\"M23 121h254\" stroke=\"#d4bf9e\"></path></svg>","<svg class=\"realm-illustration\" viewBox=\"0 0 300 125\" fill=\"none\" aria-hidden=\"true\"><circle cx=\"155\" cy=\"58\" r=\"50\" fill=\"#eddfdf\"></circle><circle cx=\"191\" cy=\"33\" r=\"16\" fill=\"#dfbd82\"></circle><path d=\"M9 112q49-40 103-17t98-8q42-23 81 25Z\" fill=\"#c4c9ad\"></path><path d=\"M49 100q28-84 67-28 42-67 73-18 36-36 65 46\" fill=\"#9ca78e\"></path><path d=\"M118 113q-23-15 25-30t7-29\" stroke=\"#e4e6d6\" stroke-width=\"15\"></path><ellipse cx=\"161\" cy=\"103\" rx=\"66\" ry=\"13\" fill=\"#adc6c0\"></ellipse><path d=\"M132 103h43m-25 5h30\" stroke=\"#e8eee1\" stroke-linecap=\"round\"></path><path d=\"M202 102V58m-4 29-14-13\" stroke=\"#7e6170\" stroke-width=\"3\"></path><circle cx=\"201\" cy=\"55\" r=\"19\" fill=\"#bf8da3\"></circle><circle cx=\"184\" cy=\"67\" r=\"14\" fill=\"#d4a5b3\"></circle><circle cx=\"218\" cy=\"69\" r=\"16\" fill=\"#c49aac\"></circle><g transform=\"translate(40 97)\"><path d=\"M0 12v-33\" stroke=\"#7c7360\" stroke-width=\"2\"></path><path d=\"M0-35Q-23-23-12-5L0 0l12-5Q23-23 0-35\" fill=\"#7d927d\"></path><path d=\"M0-25V0\" stroke=\"#a6b29a\"></path></g><g transform=\"translate(260 97)\"><path d=\"M0 12v-33\" stroke=\"#7c7360\" stroke-width=\"2\"></path><path d=\"M0-35Q-23-23-12-5L0 0l12-5Q23-23 0-35\" fill=\"#7d927d\"></path><path d=\"M0-25V0\" stroke=\"#a6b29a\"></path></g><path d=\"M23 121h254\" stroke=\"#d4bf9e\"></path></svg>","<svg class=\"realm-illustration\" viewBox=\"0 0 300 125\" fill=\"none\" aria-hidden=\"true\"><circle cx=\"155\" cy=\"58\" r=\"50\" fill=\"#eddfdf\"></circle><circle cx=\"191\" cy=\"33\" r=\"16\" fill=\"#dfbd82\"></circle><path d=\"M9 112q49-40 103-17t98-8q42-23 81 25Z\" fill=\"#c4c9ad\"></path><g><path d=\"M87 68h126v40H87Z\" fill=\"#c5a17d\"></path><path d=\"M131 108V67h38v41\" fill=\"#96725e\"></path><path d=\"M116 67q20-16 34-42 14 26 34 42Z\" fill=\"#71517e\" stroke=\"#ddbd85\" stroke-width=\"2\"></path><path d=\"M65 76q18-11 34-31 16 20 34 31ZM168 76q18-11 34-31 16 20 34 31Z\" fill=\"#85618a\" stroke=\"#ddbd85\" stroke-width=\"2\"></path><path d=\"M80 109h140m-148 7h156\" stroke=\"#b39174\" stroke-width=\"4\"></path><path d=\"M150 26V9l17 5-17 5\" stroke=\"#bd945c\" stroke-width=\"2\"></path><path d=\"M94 87h10v12H94Zm103 0h10v12h-10Z\" fill=\"#edc98a\"></path></g><g transform=\"translate(40 97)\"><path d=\"M0 12v-33\" stroke=\"#7c7360\" stroke-width=\"2\"></path><path d=\"M0-35Q-23-23-12-5L0 0l12-5Q23-23 0-35\" fill=\"#7d927d\"></path><path d=\"M0-25V0\" stroke=\"#a6b29a\"></path></g><g transform=\"translate(260 97)\"><path d=\"M0 12v-33\" stroke=\"#7c7360\" stroke-width=\"2\"></path><path d=\"M0-35Q-23-23-12-5L0 0l12-5Q23-23 0-35\" fill=\"#7d927d\"></path><path d=\"M0-25V0\" stroke=\"#a6b29a\"></path></g><path d=\"M23 121h254\" stroke=\"#d4bf9e\"></path></svg>"];
+let screen = 'map', active = 0, results = [], questionIndex = 0, selected = null, correct = 0, sound = true;
+const main = document.getElementById('main');
+const total = () => results.reduce((sum, count, i) => sum + count * stages[i].points, 0);
+const stars = count => '★'.repeat(count === 5 ? 3 : count >= 3 ? 2 : 1);
+const escapeHTML = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const button = (text, action, cls = 'primary-button') => `<button class="${cls}" data-action="${action}">${text}</button>`;
+function render(focus = false) {
+  const stage = stages[active];
+  document.getElementById('score').textContent = (total() + (screen === 'quiz' ? correct * stage.points : 0)).toLocaleString('en-US');
+  if (screen === 'map') {
+    main.innerHTML = `<section class="intro"><div><div class="eyebrow"><span></span>SETIAP PERIBAHASA, SEBUAH CERITA</div><h1 tabindex="-1">Di sebalik kata,<br class="mobile-break"> tersimpan <em>keajaiban.</em></h1><p>Jelajahi dunia fantasi Melayu. Uji kebijaksanaanmu, singkap makna,<br class="desktop-break"> dan jadilah legenda bahasa yang seterusnya.</p></div><div class="intro-art">${garden}<span>Ilmu bersemi, hikayat bermula.</span></div></section>
+    <div class="adventure-layout"><section class="map-panel" aria-label="Peta tiga peringkat"><div class="map-top"><span>PETA ALAM HIKAYAT</span><span class="map-live"><span></span>${results.length} / 3 peringkat selesai</span></div><div class="map-art">${landscape}${stages.map((s,i) => `<button data-stage="${i}" class="map-location location-${i} ${i > results.length ? 'locked' : ''} ${i === active ? 'chosen' : ''}" aria-label="${s.name}, ${i > results.length ? 'terkunci' : i < results.length ? 'selesai' : 'tersedia'}"><span class="location-pin" aria-hidden="true">${i > results.length ? '◇' : i < results.length ? '✓' : '⚑'}</span><span class="location-label"><small>PERINGKAT 0${i+1}</small><strong>${s.name}</strong><span>${i > results.length ? 'Belum diterokai' : i < results.length ? 'Pengembaraan selesai' : 'Pengembaraan bermula di sini'}</span></span></button>`).join('')}<div class="map-caption">✦ Tanah legenda, khazanah bahasa ✦</div></div><div class="map-legend"><span><i class="legend-dot available"></i>Sedia diterokai</span><span><i class="legend-dot"></i>Terkunci</span></div></section>
+    <aside class="quest-panel">${realms[active]}<span class="tag">PERINGKAT 0${active+1}</span><h2>${stage.name}</h2><span class="quest-topic">${escapeHTML(stage.topic)}</span><p>${stage.desc}</p><div class="quest-stats"><span><b>5</b> soalan</span><span><b>${stage.points}</b> mata / soalan</span></div><div class="reward"><div><span>GANJARAN MAKSIMUM</span><strong>${stage.points*5} <small>mata</small></strong></div><span class="stars-text" aria-label="3 bintang">★★★</span></div>${active > results.length ? '<button class="primary-button" disabled>Selesaikan peringkat '+active+'</button>' : active < results.length ? '<div class="completed-label">✓ Selesai · '+results[active]*stage.points+' mata</div>' : button(results.length ? 'Teruskan Pengembaraan →' : 'Mulakan Pengembaraan →','start')}<span class="quest-note">Tiada had masa. Nikmati setiap langkah.</span></aside></div>
+    <section class="journey-strip"><div class="journey-title"><span class="tiny-label">JEJAK LANGKAHMU</span><h3>Tiga alam. Satu legenda.</h3></div>${stages.map((s,i)=>`<button class="journey-step ${i===results.length?'current':''}" data-stage="${i}"><span class="step-number">${i<results.length?'✓':'0'+(i+1)}</span><span><strong>${escapeHTML(s.topic)}</strong><small>${i<results.length?stars(results[i])+' · '+results[i]*s.points+' mata':i>results.length?'Menanti untuk dibuka':'Pengembaraan menantimu'}</small></span></button>`).join('')}</section>`;
+  } else if (screen === 'quiz') {
+    const q = questions[active][questionIndex];
+    main.innerHTML = `<section class="play-section">${button('‹ Kembali ke peta','map','back-button')}<div class="quiz-top"><span class="eyebrow">PERINGKAT 0${active+1} · ${escapeHTML(stage.topic)}</span><span>Soalan ${questionIndex+1} daripada 5</span></div><div class="progress-track" role="progressbar" aria-label="Kemajuan soalan" aria-valuemin="0" aria-valuemax="5" aria-valuenow="${questionIndex+1}"><span style="width:${(questionIndex+1)*20}%"></span></div><div class="question-card">${realms[active]}<span class="question-reward">✦ +${stage.points} mata</span><h1 tabindex="-1">${active===2?'Kenali ungkapan ini':'Cabaran sang pengembara'}</h1><p class="question-text">${escapeHTML(q.text)}</p>${active===2?'<p class="category-hint">Pilih kategori yang tepat untuk ungkapan di atas.</p>':''}<div class="answers ${active===2?'category-answers':''}">${q.options.map((o,i)=>`<button class="answer ${selected!==null&&i===q.answer?'correct':''} ${selected===i&&i!==q.answer?'incorrect':''}" data-answer="${i}" ${selected!==null?'disabled':''}><span class="answer-letter">${String.fromCharCode(65+i)}</span>${escapeHTML(o)}${selected!==null&&i===q.answer?' ✓':''}</button>`).join('')}</div>${selected!==null?`<div class="feedback ${selected===q.answer?'success':'error'}" role="status"><strong>${selected===q.answer?'Tepat sekali! +'+stage.points+' mata':'Belum tepat. Mari belajar bersama.'}</strong><p>${escapeHTML(q.explanation)}</p>${button(questionIndex===4?'Lihat Keputusan':'Soalan Seterusnya','next')}</div>`:''}<div class="quiz-score">Jawapan betul: ${correct} / 5<span>Markah peringkat: ${correct*stage.points}</span></div></div></section>`;
+  } else {
+    const win = screen === 'win';
+    main.innerHTML = `<section class="result-section">${realms[active]}<span class="eyebrow">${win?'TAMAT SEBUAH PENGEMBARAAN':'SATU LAGI ALAM DITEROKAI'}</span><h1 tabindex="-1">${win?(total()>=2000?'Mahaguru Peribahasa':total()>=1400?'Pendeta Mistik':'Pahlawan Bahasa'):'Syabas, pengembara!'}</h1><p>${win?'Kebijaksanaanmu kini menjadi sebahagian daripada legenda Alam Hikayat.':stage.name+' berjaya diselesaikan. Alam seterusnya kini terbuka!'}</p><div class="result-stars">${stars(win?Math.round(results.reduce((a,b)=>a+b,0)/3):correct)}</div><div class="result-total">${win?total().toLocaleString('en-US'):correct*stage.points}<small> / ${win?'2,250':stage.points*5} mata</small></div>${win?'<div class="result-list">'+stages.map((s,i)=>`<div><span>${s.name}<small>${results[i]} / 5 jawapan betul</small></span><span class="stars-text">${stars(results[i])}</span><b>${results[i]*s.points} mata</b></div>`).join('')+'</div>':''}<div class="result-actions">${win?button('Main Semula','reset'):button('Alam Seterusnya →','continue')}${button('Kembali ke Peta','map','secondary-button')}</div></section>`;
+  }
+  main.insertAdjacentHTML('beforeend','<section class="wisdom"><span aria-hidden="true">❧</span><p>“Tak kenal maka tak cinta.”<small>Warisan bahasa, kekal sepanjang masa.</small></p><span aria-hidden="true">❧</span></section>');
+  if (focus) main.querySelector('h1')?.focus({preventScroll:true});
+}
+function tone(ok) {
+  if (!sound) return;
+  let context;
+  try {
+    context = new AudioContext();
+    const oscillator = context.createOscillator(), gain = context.createGain();
+    oscillator.connect(gain); gain.connect(context.destination);
+    oscillator.frequency.setValueAtTime(ok?660:220,context.currentTime);
+    oscillator.frequency.exponentialRampToValueAtTime(ok?990:140,context.currentTime+.18);
+    gain.gain.setValueAtTime(.07,context.currentTime);
+    gain.gain.exponentialRampToValueAtTime(.001,context.currentTime+.3);
+    oscillator.onended = () => { void context.close(); };
+    oscillator.start(); oscillator.stop(context.currentTime+.3);
+  } catch { if (context) void context.close(); }
+}
+let dialogTrigger = null;
+function openDialog(id, trigger) { dialogTrigger = trigger; document.getElementById(id).showModal(); }
+for (const dialog of document.querySelectorAll('dialog')) {
+  dialog.addEventListener('close',()=>{ if(dialogTrigger?.isConnected) dialogTrigger.focus(); });
+}
+document.addEventListener('click', event => {
+  const target = event.target.closest('button, a[data-action]');
+  if (!target || target.disabled) return;
+  if (target.dataset.close) { document.getElementById(target.dataset.close).close(); return; }
+  if (target.dataset.stage !== undefined) { active = Number(target.dataset.stage); render(); main.querySelector(`[data-stage="${active}"]`)?.focus({preventScroll:true}); return; }
+  if (target.dataset.answer !== undefined) {
+    if (screen !== 'quiz' || selected !== null) return;
+    selected = Number(target.dataset.answer);
+    const ok = selected === questions[active][questionIndex].answer;
+    if (ok) correct++;
+    tone(ok); render(); main.querySelector('[data-action="next"]')?.focus({preventScroll:true}); return;
+  }
+  const action = target.dataset.action;
+  if (!action) return;
+  event.preventDefault();
+  if (action === 'help' || action === 'reset') { openDialog(action,target); return; }
+  if (action === 'sound') { sound = !sound; target.setAttribute('aria-pressed',String(sound)); target.setAttribute('aria-label',sound?'Matikan bunyi':'Hidupkan bunyi'); target.textContent=sound?'Bunyi':'Senyap'; return; }
+  if (action === 'map') screen = 'map';
+  if (action === 'start' || action === 'continue') {
+    if (action === 'continue') active = results.length;
+    if (active !== results.length || active > 2) return;
+    questionIndex = 0; selected = null; correct = 0; screen = 'quiz';
+  }
+  if (action === 'next') {
+    if (screen !== 'quiz' || selected === null) return;
+    if (questionIndex < 4) { questionIndex++; selected = null; }
+    else { if (results.length !== active) return; results.push(correct); screen = active === 2 ? 'win' : 'stage'; }
+  }
+  if (action === 'confirm-reset') { document.getElementById('reset').close(); results=[]; active=0; questionIndex=0; selected=null; correct=0; screen='map'; }
+  render(true);
+});
+render();
+</script>
+</body>
+</html>
+
